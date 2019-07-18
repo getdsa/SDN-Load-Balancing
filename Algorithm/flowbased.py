@@ -37,7 +37,7 @@ import time
 import random
 
 FLOW_IDLE_TIMEOUT = 10
-FLOW_MEMORY_TIMEOUT = 60
+FLOW_MEMORY_TIMEOUT = 10
 
 
 class MemoryEntry(object):
@@ -293,7 +293,8 @@ class iplb(object):
 
             msg = of.ofp_flow_mod(command=of.OFPFC_ADD,
                                   idle_timeout=FLOW_IDLE_TIMEOUT,
-                                  hard_timeout=of.OFP_FLOW_PERMANENT,
+                                  hard_timeout=FLOW_MEMORY_TIMEOUT,
+                                  #hard_timeout=of.OFP_FLOW_PERMANENT,
                                   data=event.ofp,
                                   actions=actions,
                                   match=match)
@@ -336,7 +337,9 @@ class iplb(object):
 
             msg = of.ofp_flow_mod(command=of.OFPFC_ADD,
                                   idle_timeout=FLOW_IDLE_TIMEOUT,
-                                  hard_timeout=of.OFP_FLOW_PERMANENT,
+                                  hard_timeout=FLOW_MEMORY_TIMEOUT,
+
+                                  #hard_timeout=of.OFP_FLOW_PERMANENT,
                                   data=event.ofp,
                                   actions=actions,
                                   match=match)

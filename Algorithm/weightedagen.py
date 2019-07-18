@@ -151,7 +151,7 @@ class iplb(object):
                     self.log.warn("Server %s down", ip)
                     del self.live_servers[ip]
 
-        # Expire old flows
+        ### Expire old flows
         c = len(self.memory)
         self.memory = {k: v for k, v in self.memory.items()
                        if not v.is_expired}
